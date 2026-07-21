@@ -1014,43 +1014,48 @@ ${languageRequirement}`;
                                 onClick={() => setIsMobileMenuOpen(true)}
                                 className="md:hidden p-1.5 text-slate-500 hover:bg-slate-100 rounded-lg active:bg-slate-200 transition-colors flex-shrink-0"
                             >
-                                <Icon name="menu" size={24} />
+                                <Icon name="menu" size={20} className="md:w-6 md:h-6" />
                             </button>
 
                             <img 
                                 src="https://i.postimg.cc/4NTG1KrT/zhi-shang-zhanlogo-ol-quan-ying-wen-lan-se.png" 
                                 alt="BrandBase Logo" 
-                                className="h-7 sm:h-9 md:h-12 w-auto object-contain pointer-events-none flex-shrink-0"
+                                className="h-6 sm:h-9 md:h-12 w-auto object-contain pointer-events-none flex-shrink-0"
                             />
                             <div className="hidden sm:block truncate ml-1">
                                 <h1 className="text-base md:text-xl font-bold text-slate-800 truncate">BrandBase</h1>
                                 <p className="text-[10px] md:text-xs text-slate-500 hidden md:block truncate">{t.appSubtitle}</p>
                             </div>
                         </div>
-                        <div className="flex gap-1.5 sm:gap-2 flex-shrink-0 ml-2">
+                        <div className="flex gap-1 sm:gap-2 flex-shrink-0 ml-1">
+                            {/* 語言切換：加上 EN/中 文字 */}
                             <button
                                 onClick={() => setLang(lang === 'zh-TW' ? 'en' : 'zh-TW')}
-                                className="p-2 md:px-3 md:py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors flex items-center justify-center gap-1 font-bold text-sm"
+                                className="px-2 py-1.5 md:px-3 md:py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors flex items-center justify-center gap-1 font-bold text-xs md:text-sm"
                                 title={lang === 'zh-TW' ? 'Switch to English' : '切換至繁體中文'}
                             >
-                                <Icon name="globe" size={18} />
-                                <span className="hidden md:inline">{lang === 'zh-TW' ? 'EN' : '中'}</span>
+                                <Icon name="globe" size={16} className="md:w-[18px] md:h-[18px]" />
+                                <span>{lang === 'zh-TW' ? 'EN' : '中'}</span>
                             </button>
 
+                            {/* 關於：維持純圖示以節省空間 */}
                             <button 
                                 onClick={() => setShowAbout(true)}
-                                className="p-2 md:px-3 md:py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors flex items-center justify-center gap-2"
+                                className="p-1.5 md:px-3 md:py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors flex items-center justify-center gap-1"
                                 title="關於講師與版權"
                             >
-                                <Icon name="info" size={18} />
-                                <span className="hidden md:inline text-sm font-bold">{t.btnAbout}</span>
+                                <Icon name="info" size={16} className="md:w-[18px] md:h-[18px]" />
+                                <span className="hidden md:inline text-sm font-bold">{t.btnAboutShort}</span>
                             </button>
+
+                            {/* 設定：加上手機版專屬短文案 */}
                             <button 
                                 onClick={() => setShowSetup(!showSetup)}
-                                className={`p-2 md:px-4 md:py-2 rounded-lg flex items-center justify-center gap-2 transition-colors ${showSetup ? 'bg-slate-800 text-white shadow-sm' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'}`}
+                                className={`px-2 py-1.5 md:px-4 md:py-2 rounded-lg flex items-center justify-center gap-1 transition-colors text-xs md:text-sm font-bold ${showSetup ? 'bg-slate-800 text-white shadow-sm' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'}`}
                                 title={showSetup ? t.btnSettings : t.btnEdit}
                             >
-                                <Icon name="settings" size={18} />
+                                <Icon name="settings" size={16} className="md:w-[18px] md:h-[18px]" />
+                                <span className="md:hidden">{showSetup ? t.btnSettingsShort : (lang === 'zh-TW' ? '修改' : 'Edit')}</span>
                                 <span className="hidden md:inline">{showSetup ? t.btnSettings : t.btnEdit}</span>
                             </button>
                         </div>
